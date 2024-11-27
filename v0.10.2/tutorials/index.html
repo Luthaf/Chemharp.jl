@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Tutorials · Chemfiles.jl</title><script data-outdated-warner src="../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.039/juliamono-regular.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.11/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../assets/documenter.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../">Chemfiles.jl</a></span></div><form class="docs-search" action="../search/"><input class="docs-search-query" id="documenter-search-query" name="q" type="text" placeholder="Search docs"/></form><ul class="docs-menu"><li><a class="tocitem" href="../">Julia interface to chemfiles</a></li><li class="is-active"><a class="tocitem" href>Tutorials</a><ul class="internal"><li><a class="tocitem" href="#Read-a-single-frame"><span>Read a single frame</span></a></li><li><a class="tocitem" href="#Generating-a-structure"><span>Generating a structure</span></a></li><li><a class="tocitem" href="#Using-selections"><span>Using selections</span></a></li></ul></li><li><a class="tocitem" href="../reference/trajectory/">Trajectory</a></li><li><a class="tocitem" href="../reference/frame/">Frame</a></li><li><a class="tocitem" href="../reference/atom/">Atom</a></li><li><a class="tocitem" href="../reference/cell/">UnitCell</a></li><li><a class="tocitem" href="../reference/topology/">Topology</a></li><li><a class="tocitem" href="../reference/residue/">Residue</a></li><li><a class="tocitem" href="../reference/selection/">Selection</a></li><li><a class="tocitem" href="../reference/misc/">Miscelaneous functions</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href>Tutorials</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Tutorials</a></li></ul></nav><div class="docs-right"><a class="docs-edit-link" href="https://github.com/chemfiles/Chemfiles.jl/blob/master/docs/src/tutorials.md" title="Edit on GitHub"><span class="docs-icon fab"></span><span class="docs-label is-hidden-touch">Edit on GitHub</span></a><a class="docs-settings-button fas fa-cog" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-sidebar-button fa fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a></div></header><article class="content" id="documenter-page"><h1 id="Tutorials"><a class="docs-heading-anchor" href="#Tutorials">Tutorials</a><a id="Tutorials-1"></a><a class="docs-heading-anchor-permalink" href="#Tutorials" title="Permalink"></a></h1><p>This section presents some hand-on tutorials to the chemfiles Julia package. All the code here is under the <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC-0 Universal Licence</a> which means that you are free to do whatever you want with it (<em>i.e.</em> it is Public Domain code)</p><h2 id="Read-a-single-frame"><a class="docs-heading-anchor" href="#Read-a-single-frame">Read a single frame</a><a id="Read-a-single-frame-1"></a><a class="docs-heading-anchor-permalink" href="#Read-a-single-frame" title="Permalink"></a></h2><p>In this tutorials we will read a frame from a trajectory, and print the indexes of all the atom in the half-space <code>x &lt; 5</code>.</p><p>We start by <code>using</code> the <code>Chemfiles</code> package to bring in scope the needed functions:</p><pre><code class="language-julia hljs">#!/usr/bin/env julia
+using chemfiles</code></pre><p>Then we open a Trajectory and read the first frame:</p><pre><code class="language-julia hljs">trajectory = Trajectory(&quot;filename.xyz&quot;)
+frame = read(trajectory)</code></pre><p>We can now create a list to store the indices of the atoms with <code>x &lt; 5</code>, and get the positions of the atoms in the frame with the <a href="../reference/frame/#Chemfiles.positions-Tuple{Frame}"><code>positions</code></a> function</p><pre><code class="language-julia hljs">less_than_five = UInt64[]
+pos = positions(frame)</code></pre><p>Iterating through the atoms in the frame, we get the ones matching our condition. <a href="../reference/frame/#Base.size-Tuple{Frame}"><code>size(::Frame)</code></a> gives the number of atoms in the frame, which is also the size of the <code>positions</code> array. This positions array shape is  <code>(3, size(frame))</code>.</p><pre><code class="language-julia hljs">for i in 0:size(frame)
+    if pos[1, i] &lt; 5
+        push!(less_than_five, i)
+    end
+end</code></pre><p>And finally we can print our results</p><pre><code class="language-julia hljs">println(&quot;Atoms with x &lt; 5: &quot;)
+for i in less_than_five
+    println(&quot;  - $i&quot;)
+end</code></pre><details><summary><a>Click here to see the whole program</a></summary><pre><code class="language-julia hljs">#!/usr/bin/env julia
+using chemfiles
+
+trajectory = Trajectory(&quot;filename.xyz&quot;)
+frame = read(trajectory)
+
+less_than_five = UInt64[]
+pos = positions(frame)
+
+for i in 0:size(frame)
+    if pos[1, i] &lt; 5
+        push!(less_than_five, i)
+    end
+end
+
+println(&quot;Atoms with x &lt; 5: &quot;)
+for i in less_than_five
+    println(&quot;  - $i&quot;)
+end</code></pre></details><p>For more information about reading frame in a trajectory, see the following functions:</p><ul><li><a href="../reference/trajectory/#Chemfiles.read_step-Tuple{Trajectory,Integer}"><code>read_step</code></a> to directly read a given step.</li><li><a href="../reference/frame/#Chemfiles.set_cell!-Tuple{Frame,UnitCell}"><code>set_cell!(::Trajectory)</code></a> and <a href="../reference/frame/#Chemfiles.set_topology!-Tuple{Frame,Topology}"><code>set_topology!(::Trajectory)</code></a> to specify an unit cell or a topology for all frames in a trajectory.</li></ul><h2 id="Generating-a-structure"><a class="docs-heading-anchor" href="#Generating-a-structure">Generating a structure</a><a id="Generating-a-structure-1"></a><a class="docs-heading-anchor-permalink" href="#Generating-a-structure" title="Permalink"></a></h2><p>Now that we know how to read frames from a trajectory, let&#39;s try to create a new structure and write it to a file. As previsouly, we start by using the Chemfiles package</p><pre><code class="language-julia hljs">#!/usr/bin/env julia
+using Chemfiles</code></pre><p>Everything starts in a <a href="../reference/topology/#Chemfiles.Topology"><code>Topology</code></a>. This is the class that defines the atoms and the connectivity in a system. Here, we add three <a href="../reference/atom/#Chemfiles.Atom"><code>Atom</code></a> and two bonds to create a water molecule.</p><pre><code class="language-julia hljs">topology = Topology()
+add_atom!(topology, Atom(&quot;H&quot;))
+add_atom!(topology, Atom(&quot;O&quot;))
+add_atom!(topology, Atom(&quot;H&quot;))
+
+add_bond!(topology, 0, 1)
+add_bond!(topology, 2, 1)</code></pre><p>We can then create a <a href="../reference/frame/#Chemfiles.Frame"><code>Frame</code></a> corresponding to this topology. We resize the frame to ensure that the frame and the topology contains the same number of atoms.</p><pre><code class="language-julia hljs">frame = Frame()
+resize!(frame, 3)
+set_topology!(frame, topology)</code></pre><p>We can then set the atomic positions:</p><pre><code class="language-julia hljs">pos = frame.positions()
+pos[1, :] = [1.0, 0.0, 0.0]
+pos[2, :] = [0.0, 0.0, 0.0]
+pos[3, :] = [0.0, 1.0, 0.0]</code></pre><p>Another possibility is to directly add atoms to the frame. Here we define a second molecule representing carbon dioxyde. <a href="../reference/frame/#Chemfiles.add_atom!"><code>add_atom!</code></a> takes three arguments: the frame, the atom, and the position of the atom.</p><pre><code class="language-julia hljs">add_atom!(frame, Atom(&quot;O&quot;), [5.0, 0.0, 0.0])
+add_atom!(frame, Atom(&quot;C&quot;), [6.0, 0.0, 0.0])
+add_atom!(frame, Atom(&quot;O&quot;), [7.0, 0.0, 0.0])
+add_bond!(frame, 3, 4)
+add_bond!(frame, 4, 5)</code></pre><p>Finally, we can set the <a href="../reference/cell/#Chemfiles.UnitCell"><code>UnitCell</code></a> associated with this frame.</p><pre><code class="language-julia hljs">set_cell!(frame, UnitCell(10, 10, 10))</code></pre><p>Now that our frame is constructed, it is time to write it to a file. For that, we open a trajectory in write (<code>&#39;w&#39;</code>) mode, and write to it, using the same syntax as a standard Julia <code>open(...) do ... end</code> block</p><pre><code class="language-julia hljs">Trajectory(&quot;water-co2.pdb&quot;, &#39;w&#39;) do trajectory
+    write(trajectory, frame)
+end</code></pre><details><summary><a>Click here to see the whole program</a></summary><pre><code class="language-julia hljs">#!/usr/bin/env julia
+using Chemfiles
+
+topology = Topology()
+add_atom!(topology, Atom(&quot;H&quot;))
+add_atom!(topology, Atom(&quot;O&quot;))
+add_atom!(topology, Atom(&quot;H&quot;))
+
+add_bond!(topology, 0, 1)
+add_bond!(topology, 2, 1)
+
+frame = Frame()
+resize!(frame, 3)
+set_topology!(frame, topology)
+
+pos = frame.positions()
+pos[1, :] = [1.0, 0.0, 0.0]
+pos[2, :] = [0.0, 0.0, 0.0]
+pos[3, :] = [0.0, 1.0, 0.0]
+
+add_atom!(frame, Atom(&quot;O&quot;), [5.0, 0.0, 0.0])
+add_atom!(frame, Atom(&quot;C&quot;), [6.0, 0.0, 0.0])
+add_atom!(frame, Atom(&quot;O&quot;), [7.0, 0.0, 0.0])
+add_bond!(frame, 3, 4)
+add_bond!(frame, 4, 5)
+
+set_cell!(frame, UnitCell(10, 10, 10))
+
+Trajectory(&quot;water-co2.pdb&quot;, &#39;w&#39;) do trajectory
+    write(trajectory, frame)
+end</code></pre></details><h2 id="Using-selections"><a class="docs-heading-anchor" href="#Using-selections">Using selections</a><a id="Using-selections-1"></a><a class="docs-heading-anchor-permalink" href="#Using-selections" title="Permalink"></a></h2><p>Now that we know how to read and write frame from trajectories, how about we do a bit a filtering? In this tutorial, we will read all the frames from a file, and use selections to filter which atoms we will write back to another file. This example will also show how chemfiles can be used to convert from a file format to another one.</p><p>We start by opening the two trajectories we will need</p><pre><code class="language-julia hljs">trajectory = Trajectory(&quot;input.arc&quot;)
+output = Trajectory(&quot;output.pdb&quot;, &#39;w&#39;)</code></pre><p>And we create a <a href="../reference/selection/#Chemfiles.Selection"><code>Selection</code></a> object to filter the atoms we want to remove.</p><pre><code class="language-julia hljs">selection = Selection(&quot;name Zn or name N&quot;)</code></pre><p>Then we can iterate over all the frames in the trajectory, and use the selection to get the list of atoms to remove. The result of <a href="../reference/selection/#Chemfiles.evaluate-Tuple{Selection,Frame}"><code>evaluate</code></a> is a list containing the atoms matching the selection.</p><pre><code class="language-julia hljs">for frame in trajectory
+    to_remove = evaluate(selection, frame)</code></pre><p>In order to remove the atoms from the frame, we need to sort the <code>to_remove</code> list in descending order: removing the atom at index <code>i</code> will shift the index of all the atoms after <code>i</code>. So we start from the end and work toward the start of the frame.</p><pre><code class="language-julia hljs">    for i in reverse(sort(to_remove))
+        remove_atom!(frame, i)
+    end</code></pre><p>Finally, we can write the cleaned frame to the output file, and start the next iteration.</p><pre><code class="language-julia hljs">    write(output, frame)
+end</code></pre><p>Since we opened the files directly instead of using a <code>do ... end</code> block, we hae to close them to flush all buffers and release file descriptors.</p><pre><code class="language-julia hljs">close(trajectory)
+# When running on the REPL, closing the trajectory
+# is required to flush buffered output and finish writing
+close(output)</code></pre><details><summary><a>Click here to see the whole program</a></summary><pre><code class="language-julia hljs">#!/usr/bin/env julia
+using Chemfiles
+
+trajectory = Trajectory(&quot;input.arc&quot;)
+output = Trajectory(&quot;output.pdb&quot;, &#39;w&#39;)
+
+selection = Selection(&quot;name Zn or name N&quot;)
+
+for frame in trajectory
+    to_remove = evaluate(selection, frame)
+    for i in reverse(sort(to_remove))
+        remove_atom!(frame, i)
+    end
+    write(output, frame)
+end
+
+close(trajectory)
+# When running on the REPL, closing the trajectory
+# is required to flush buffered output and finish writing
+close(output)</code></pre></details></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../">« Julia interface to chemfiles</a><a class="docs-footer-nextpage" href="../reference/trajectory/">Trajectory »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.10 on <span class="colophon-date" title="Monday 29 November 2021 10:39">Monday 29 November 2021</span>. Using Julia version 1.5.4.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

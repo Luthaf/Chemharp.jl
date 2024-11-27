@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Usage examples &#8212; Julia interface to chemfiles 0.6.0 documentation</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.6.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Julia interface reference" href="reference.html" />
+    <link rel="prev" title="Julia interface to chemfiles" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          Julia interface to chemfiles</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.6</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Julia interface reference</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Usage examples</a><ul>
+<li><a class="reference internal" href="#read-a-single-frame-indexes-jl">Read a single frame (indexes.jl)</a></li>
+<li><a class="reference internal" href="#read-multiple-frames-rmsd-jl">Read Multiple frames (rmsd.jl)</a></li>
+<li><a class="reference internal" href="#write-frames-convert-jl">Write frames (convert.jl)</a></li>
+<li><a class="reference internal" href="#use-selections-select-jl">Use selections (select.jl)</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="index.html" title="Previous Chapter: Julia interface to chemfiles"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Julia interfa...</span>
+    </a>
+  </li>
+  <li>
+    <a href="reference.html" title="Next Chapter: Julia interface reference"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Julia interfa... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/examples.rst.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="usage-examples">
+<h1>Usage examples<a class="headerlink" href="#usage-examples" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="read-a-single-frame-indexes-jl">
+<h2>Read a single frame (indexes.jl)<a class="headerlink" href="#read-a-single-frame-indexes-jl" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-julia"><div class="highlight"><pre><span></span><span class="c">#!/usr/bin/env julia</span>
+<span class="k">using</span> <span class="n">Chemfiles</span>
+
+<span class="n">traj</span> <span class="o">=</span> <span class="n">Trajectory</span><span class="p">(</span><span class="s">&quot;filename.xyz&quot;</span><span class="p">)</span>
+<span class="n">frame</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">traj</span><span class="p">)</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">positions</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+<span class="n">indexes</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">:</span><span class="n">size</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">5</span>
+        <span class="n">push!</span><span class="p">(</span><span class="n">indexes</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;Atoms with x &lt; 5: &quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="kp">in</span> <span class="n">indexes</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">&quot;  - </span><span class="si">$i</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="read-multiple-frames-rmsd-jl">
+<h2>Read Multiple frames (rmsd.jl)<a class="headerlink" href="#read-multiple-frames-rmsd-jl" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-julia"><div class="highlight"><pre><span></span><span class="c">#!/usr/bin/env julia</span>
+<span class="k">using</span> <span class="n">Chemfiles</span>
+
+<span class="n">traj</span> <span class="o">=</span> <span class="n">Trajectory</span><span class="p">(</span><span class="s">&quot;filename.nc&quot;</span><span class="p">)</span>
+
+<span class="n">distances</span> <span class="o">=</span> <span class="kt">Float64</span><span class="p">[]</span>
+
+<span class="c"># Accumulate the distances to the origin of the 10th atom throughtout the</span>
+<span class="c"># trajectory</span>
+<span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">:</span><span class="n">nsteps</span><span class="p">(</span><span class="n">input_file</span><span class="p">)</span>
+    <span class="n">frame</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">traj</span><span class="p">)</span>
+    <span class="c"># Position of the 10th atom</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">positions</span><span class="p">(</span><span class="n">frame</span><span class="p">)[</span><span class="o">:</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">dot</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">pos</span><span class="p">))</span>
+    <span class="n">push!</span><span class="p">(</span><span class="n">distances</span><span class="p">,</span> <span class="n">dist</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="n">mean</span> <span class="o">=</span> <span class="n">sum</span><span class="p">(</span><span class="n">distances</span><span class="p">)</span><span class="o">/</span><span class="n">size</span><span class="p">(</span><span class="n">distances</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">rmsd</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="k">for</span> <span class="n">dist</span> <span class="kp">in</span> <span class="n">distances</span>
+    <span class="n">rmsd</span> <span class="o">+=</span> <span class="p">(</span><span class="n">mean</span> <span class="o">-</span> <span class="n">dist</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">mean</span> <span class="o">-</span> <span class="n">dist</span><span class="p">)</span>
+<span class="k">end</span>
+<span class="n">rmsd</span> <span class="o">/=</span> <span class="n">size</span><span class="p">(</span><span class="n">distances</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">rmsd</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">rmsd</span><span class="p">)</span>
+
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;Root-mean square displacement is: </span><span class="si">$rmsd</span><span class="s">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="write-frames-convert-jl">
+<h2>Write frames (convert.jl)<a class="headerlink" href="#write-frames-convert-jl" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-julia"><div class="highlight"><pre><span></span><span class="c">#!/usr/bin/env julia</span>
+<span class="k">using</span> <span class="n">Chemfiles</span>
+
+<span class="n">input_file</span> <span class="o">=</span> <span class="n">Trajectory</span><span class="p">(</span><span class="s">&quot;water.xyz&quot;</span><span class="p">)</span>
+<span class="n">water_topology</span> <span class="o">=</span> <span class="n">Topology</span><span class="p">()</span>
+<span class="c"># Orthorhombic UnitCell with lengths of 20, 15 and 35 A</span>
+<span class="n">cell</span> <span class="o">=</span> <span class="n">UnitCell</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">35</span><span class="p">)</span>
+
+<span class="c"># Create Atoms</span>
+<span class="n">O</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s">&quot;O&quot;</span><span class="p">)</span>
+<span class="n">H</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s">&quot;H&quot;</span><span class="p">)</span>
+
+<span class="c"># Fill the topology with one water molecule</span>
+<span class="n">push!</span><span class="p">(</span><span class="n">water_topology</span><span class="p">,</span> <span class="n">O</span><span class="p">)</span>
+<span class="n">push!</span><span class="p">(</span><span class="n">water_topology</span><span class="p">,</span> <span class="n">H</span><span class="p">)</span>
+<span class="n">push!</span><span class="p">(</span><span class="n">water_topology</span><span class="p">,</span> <span class="n">H</span><span class="p">)</span>
+
+<span class="n">add_bond!</span><span class="p">(</span><span class="n">water_topology</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">add_bond!</span><span class="p">(</span><span class="n">water_topology</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">output</span> <span class="o">=</span> <span class="n">Trajectory</span><span class="p">(</span><span class="s">&quot;water.pdb&quot;</span><span class="p">,</span> <span class="s">&quot;w&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">:</span><span class="n">nsteps</span><span class="p">(</span><span class="n">input_file</span><span class="p">)</span>
+    <span class="n">frame</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">input_file</span><span class="p">)</span>
+    <span class="c"># Set the frame cell and topology</span>
+    <span class="n">set_cell!</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">cell</span><span class="p">)</span>
+    <span class="n">set_topology!</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">water_topology</span><span class="p">)</span>
+    <span class="c"># Write the frame to the output file, using PDB format</span>
+    <span class="n">write</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">frame</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="use-selections-select-jl">
+<h2>Use selections (select.jl)<a class="headerlink" href="#use-selections-select-jl" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-julia"><div class="highlight"><pre><span></span><span class="c">#!/usr/bin/env julia</span>
+<span class="k">using</span> <span class="n">Chemfiles</span>
+
+<span class="c"># Read a frame from a given file</span>
+<span class="n">frame</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">Trajectory</span><span class="p">(</span><span class="s">&quot;filename.xyz&quot;</span><span class="p">))</span>
+
+<span class="c"># Create a selection for all atoms with &quot;Zn&quot; name</span>
+<span class="n">selection</span> <span class="o">=</span> <span class="n">Selection</span><span class="p">(</span><span class="s">&quot;name Zn&quot;</span><span class="p">)</span>
+<span class="c"># Get the list of matching atoms from the frame</span>
+<span class="n">zincs</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">selection</span><span class="p">,</span> <span class="n">frame</span><span class="p">)</span>
+
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;We have </span><span class="si">$</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">zincs</span><span class="p">))</span><span class="s"> zinc in the frame&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">index</span> <span class="kp">in</span> <span class="n">zincs</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$index</span><span class="s"> is a zinc&quot;</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="c"># Create a selection for multiple atoms</span>
+<span class="n">selection</span> <span class="o">=</span> <span class="n">Selection</span><span class="p">(</span><span class="s">&quot;angles: name(#1) H and name(#2) O and name(#3) H&quot;</span><span class="p">)</span>
+<span class="c"># Get the list of matching atoms in the frame</span>
+<span class="n">waters</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">selection</span><span class="p">,</span> <span class="n">frame</span><span class="p">)</span>
+
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;We have </span><span class="si">$</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">waters</span><span class="p">))</span><span class="s"> water molecules&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span> <span class="kp">in</span> <span class="n">waters</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$i</span><span class="s"> - </span><span class="si">$j</span><span class="s"> - </span><span class="si">$k</span><span class="s"> is a water molecule&quot;</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015, Guillaume Fraux — MPLv2 licence.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

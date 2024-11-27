@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Selection type &#8212; Julia interface to chemfiles 0.9.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Atom type" href="atom.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Julia interface to chemfiles</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.9</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Navigation <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc.html">Miscellaneous functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trajectory.html"><code class="docutils literal notranslate"><span class="pre">Trajectory</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frame.html"><code class="docutils literal notranslate"><span class="pre">Frame</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cell.html"><code class="docutils literal notranslate"><span class="pre">UnitCell</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="topology.html"><code class="docutils literal notranslate"><span class="pre">Topology</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="residue.html"><code class="docutils literal notranslate"><span class="pre">Residue</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atom.html"><code class="docutils literal notranslate"><span class="pre">Atom</span></code> type</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">Selection</span></code> type</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="atom.html" title="Previous Chapter: Atom type"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Atom type</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc.html">Miscellaneous functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trajectory.html"><code class="docutils literal notranslate"><span class="pre">Trajectory</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frame.html"><code class="docutils literal notranslate"><span class="pre">Frame</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cell.html"><code class="docutils literal notranslate"><span class="pre">UnitCell</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="topology.html"><code class="docutils literal notranslate"><span class="pre">Topology</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="residue.html"><code class="docutils literal notranslate"><span class="pre">Residue</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atom.html"><code class="docutils literal notranslate"><span class="pre">Atom</span></code> type</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">Selection</span></code> type</a></li>
+</ul>
+
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="selection-type">
+<span id="selection"></span><h1><code class="docutils literal notranslate"><span class="pre">Selection</span></code> type<a class="headerlink" href="#selection-type" title="Permalink to this headline">¶</a></h1>
+<dl class="class"><dt id=Selection><em class="property">type </em><code class="descname">Selection</code><a class="headerlink" href="#Selection" title="Permalink to thistype">¶</a></dt><dd class="body">A <code class="docutils literal notranslate"><span class="pre">Selection</span></code> is used to select a group of atoms. Examples of selections are
+“name H” and “(x &lt; 45 and name O) or name C”. See the <a class="reference external" href="http://chemfiles.org/chemfiles/latest/selections.html">full documentation</a> for more
+information about the selection language.</dd></dl><dl class="function"><dt id="Selection-70d94b56cb3ff9cc462a9fbf8354b6b1"><em class="property">function </em><code class="descname">Selection</code><span class="sig-paren">(</span><em>selection</em>::AbstractString<span class="sig-paren">)</span><a class="headerlink" href="#Selection-70d94b56cb3ff9cc462a9fbf8354b6b1" title="Permalink to this function">¶</a></dt><dd>Create a <code class="docutils literal notranslate"><span class="pre">Selection</span></code> from a selection string.</dd></dl><dl class="function"><dt id="deepcopy-ec7ffb6891b55d49d4d4795e4769dba4"><em class="property">function </em><code class="descname">deepcopy</code><span class="sig-paren">(</span><em>selection</em>::Selection<span class="sig-paren">)</span><a class="headerlink" href="#deepcopy-ec7ffb6891b55d49d4d4795e4769dba4" title="Permalink to this function">¶</a></dt><dd>Make a deep copy of a <code class="docutils literal notranslate"><span class="pre">selection</span></code>.</dd></dl><dl class="function"><dt id="size-ec7ffb6891b55d49d4d4795e4769dba4"><em class="property">function </em><code class="descname">size</code><span class="sig-paren">(</span><em>selection</em>::Selection<span class="sig-paren">)</span><a class="headerlink" href="#size-ec7ffb6891b55d49d4d4795e4769dba4" title="Permalink to this function">¶</a></dt><dd>Get the size of a <code class="docutils literal notranslate"><span class="pre">selection</span></code>, <em>i.e.</em> the number of atoms we are selecting
+together.</dd></dl><dl class="function"><dt id="evaluate-915944bc647ae8de26da3672963b5454"><em class="property">function </em><code class="descname">evaluate</code><span class="sig-paren">(</span><em>selection</em>::Selection, <em>frame</em>::Frame<span class="sig-paren">)</span><a class="headerlink" href="#evaluate-915944bc647ae8de26da3672963b5454" title="Permalink to this function">¶</a></dt><dd>Evaluate a <code class="docutils literal notranslate"><span class="pre">selection</span></code> on a given <code class="docutils literal notranslate"><span class="pre">frame</span></code>. This function return a list of
+indexes or tuples of indexes of atoms in the frame matching the selection.</dd></dl><dl class="function"><dt id="selection_string-ec7ffb6891b55d49d4d4795e4769dba4"><em class="property">function </em><code class="descname">selection_string</code><span class="sig-paren">(</span><em>selection</em>::Selection<span class="sig-paren">)</span><a class="headerlink" href="#selection_string-ec7ffb6891b55d49d4d4795e4769dba4" title="Permalink to this function">¶</a></dt><dd>Get the selection string used to create a given <code class="docutils literal notranslate"><span class="pre">selection</span></code>.</dd></dl></div>
+
+
+    </div>
+      
+  </div>
+</div>
+  <footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+    </p>
+    <p class="pull-left">
+        &copy; Copyright Guillaume Fraux and contributors.
+    </p>
+    <p class="text-center">
+        BSD licensed on <a href="https://github.com/chemfiles/chemfiles">Github</a>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Atom type &#8212; Julia interface to chemfiles 0.9.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Selection type" href="selection.html" />
+    <link rel="prev" title="Residue type" href="residue.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Julia interface to chemfiles</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.9</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Navigation <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc.html">Miscellaneous functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trajectory.html"><code class="docutils literal notranslate"><span class="pre">Trajectory</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frame.html"><code class="docutils literal notranslate"><span class="pre">Frame</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cell.html"><code class="docutils literal notranslate"><span class="pre">UnitCell</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="topology.html"><code class="docutils literal notranslate"><span class="pre">Topology</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="residue.html"><code class="docutils literal notranslate"><span class="pre">Residue</span></code> type</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">Atom</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selection.html"><code class="docutils literal notranslate"><span class="pre">Selection</span></code> type</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="residue.html" title="Previous Chapter: Residue type"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Residue type</span>
+    </a>
+  </li>
+  <li>
+    <a href="selection.html" title="Next Chapter: Selection type"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Selection type &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc.html">Miscellaneous functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trajectory.html"><code class="docutils literal notranslate"><span class="pre">Trajectory</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frame.html"><code class="docutils literal notranslate"><span class="pre">Frame</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cell.html"><code class="docutils literal notranslate"><span class="pre">UnitCell</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="topology.html"><code class="docutils literal notranslate"><span class="pre">Topology</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="residue.html"><code class="docutils literal notranslate"><span class="pre">Residue</span></code> type</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">Atom</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selection.html"><code class="docutils literal notranslate"><span class="pre">Selection</span></code> type</a></li>
+</ul>
+
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="atom-type">
+<span id="atom"></span><h1><code class="docutils literal notranslate"><span class="pre">Atom</span></code> type<a class="headerlink" href="#atom-type" title="Permalink to this headline">¶</a></h1>
+<dl class="class"><dt id=Atom><em class="property">type </em><code class="descname">Atom</code><a class="headerlink" href="#Atom" title="Permalink to thistype">¶</a></dt><dd class="body"><p>An <code class="docutils literal notranslate"><span class="pre">Atom</span></code> is a particle in the current <code class="docutils literal notranslate"><span class="pre">Frame</span></code>.</p>
+<dl class="docutils">
+<dt>An atom stores the following atomic properties:</dt>
+<dd><ul class="first last simple">
+<li>atom name</li>
+<li>atom type</li>
+<li>atom mass</li>
+<li>atom charge</li>
+</ul>
+</dd>
+</dl>
+<p>The atom name is usually an unique identifier (“H1”, “C_a”) while the atom
+type will be shared among all particles of the same type: “H”, “Ow”, “CH3”.</p>
+</dd></dl><dl class="function"><dt id="Atom-104e7ad2df1b4686f89bef1747f968a0"><em class="property">function </em><code class="descname">Atom</code><span class="sig-paren">(</span><em>name</em>::String<span class="sig-paren">)</span><a class="headerlink" href="#Atom-104e7ad2df1b4686f89bef1747f968a0" title="Permalink to this function">¶</a></dt><dd>Create an atom with the given <code class="docutils literal notranslate"><span class="pre">name</span></code> and set the atom <code class="docutils literal notranslate"><span class="pre">type</span></code> to be the same
+as <code class="docutils literal notranslate"><span class="pre">name</span></code>.</dd></dl><dl class="function"><dt id="Atom-70dcd85255099a21d34318a6ac33eeb5"><em class="property">function </em><code class="descname">Atom</code><span class="sig-paren">(</span><em>frame</em>::Frame, <em>index</em>::Integer<span class="sig-paren">)</span><a class="headerlink" href="#Atom-70dcd85255099a21d34318a6ac33eeb5" title="Permalink to this function">¶</a></dt><dd>Get a copy of the <code class="docutils literal notranslate"><span class="pre">atom</span></code> at the given <code class="docutils literal notranslate"><span class="pre">index</span></code> from a <code class="docutils literal notranslate"><span class="pre">frame</span></code>.</dd></dl><dl class="function"><dt id="Atom-a86e7d896afce6df5b7c58fd02a97b99"><em class="property">function </em><code class="descname">Atom</code><span class="sig-paren">(</span><em>topology</em>::Topology, <em>index</em>::Integer<span class="sig-paren">)</span><a class="headerlink" href="#Atom-a86e7d896afce6df5b7c58fd02a97b99" title="Permalink to this function">¶</a></dt><dd>Get a copy of the <code class="docutils literal notranslate"><span class="pre">atom</span></code> at the given <code class="docutils literal notranslate"><span class="pre">index</span></code> from a <code class="docutils literal notranslate"><span class="pre">topology</span></code>.</dd></dl><dl class="function"><dt id="deepcopy-6241fea6ed6ed6a2e7331d2191ed6fac"><em class="property">function </em><code class="descname">deepcopy</code><span class="sig-paren">(</span><em>atom</em>::Atom<span class="sig-paren">)</span><a class="headerlink" href="#deepcopy-6241fea6ed6ed6a2e7331d2191ed6fac" title="Permalink to this function">¶</a></dt><dd>Make a deep copy of an <code class="docutils literal notranslate"><span class="pre">atom</span></code>.</dd></dl><dl class="function"><dt id="mass-6241fea6ed6ed6a2e7331d2191ed6fac"><em class="property">function </em><code class="descname">mass</code><span class="sig-paren">(</span><em>atom</em>::Atom<span class="sig-paren">)</span><a class="headerlink" href="#mass-6241fea6ed6ed6a2e7331d2191ed6fac" title="Permalink to this function">¶</a></dt><dd>Get the mass of an <code class="docutils literal notranslate"><span class="pre">atom</span></code> in atomic mass units.</dd></dl><dl class="function"><dt id="set_mass!-754bd7ab4725b6c1b030a7a17e3ff124"><em class="property">function </em><code class="descname">set_mass!</code><span class="sig-paren">(</span><em>atom</em>::Atom, <em>mass</em><span class="sig-paren">)</span><a class="headerlink" href="#set_mass!-754bd7ab4725b6c1b030a7a17e3ff124" title="Permalink to this function">¶</a></dt><dd><p>Set the mass of an <code class="docutils literal notranslate"><span class="pre">atom</span></code> to <code class="docutils literal notranslate"><span class="pre">mass</span></code>.</p>
+<p>The mass must be in atomic mass units.</p>
+</dd></dl><dl class="function"><dt id="charge-6241fea6ed6ed6a2e7331d2191ed6fac"><em class="property">function </em><code class="descname">charge</code><span class="sig-paren">(</span><em>atom</em>::Atom<span class="sig-paren">)</span><a class="headerlink" href="#charge-6241fea6ed6ed6a2e7331d2191ed6fac" title="Permalink to this function">¶</a></dt><dd>Get the charge of an <code class="docutils literal notranslate"><span class="pre">atom</span></code> in number of the electron charge <em>e</em>.</dd></dl><dl class="function"><dt id="set_charge!-35a0540643b5a5e5371925d9c8e890b9"><em class="property">function </em><code class="descname">set_charge!</code><span class="sig-paren">(</span><em>atom</em>::Atom, <em>charge</em><span class="sig-paren">)</span><a class="headerlink" href="#set_charge!-35a0540643b5a5e5371925d9c8e890b9" title="Permalink to this function">¶</a></dt><dd><p>Set the charge of an <code class="docutils literal notranslate"><span class="pre">atom</span></code> to <code class="docutils literal notranslate"><span class="pre">charge</span></code>.</p>
+<p>The charge must be in number of the electron charge <em>e</em>.</p>
+</dd></dl><dl class="function"><dt id="name-6241fea6ed6ed6a2e7331d2191ed6fac"><em class="property">function </em><code class="descname">name</code><span class="sig-paren">(</span><em>atom</em>::Atom<span class="sig-paren">)</span><a class="headerlink" href="#name-6241fea6ed6ed6a2e7331d2191ed6fac" title="Permalink to this function">¶</a></dt><dd>Get the name of an <code class="docutils literal notranslate"><span class="pre">atom</span></code>.</dd></dl><dl class="function"><dt id="set_name!-c95b84d8940f20c66b97deb84be21e60"><em class="property">function </em><code class="descname">set_name!</code><span class="sig-paren">(</span><em>atom</em>::Atom, <em>name</em>::String<span class="sig-paren">)</span><a class="headerlink" href="#set_name!-c95b84d8940f20c66b97deb84be21e60" title="Permalink to this function">¶</a></dt><dd>Set the name of an <code class="docutils literal notranslate"><span class="pre">atom</span></code> to <code class="docutils literal notranslate"><span class="pre">name</span></code>.</dd></dl><dl class="function"><dt id="fullname-6241fea6ed6ed6a2e7331d2191ed6fac"><em class="property">function </em><code class="descname">fullname</code><span class="sig-paren">(</span><em>atom</em>::Atom<span class="sig-paren">)</span><a class="headerlink" href="#fullname-6241fea6ed6ed6a2e7331d2191ed6fac" title="Permalink to this function">¶</a></dt><dd><p>Get the full name of an <code class="docutils literal notranslate"><span class="pre">atom</span></code> from the atom type.</p>
+<p>For example, the full name of an atom with type “He” is “Helium”.</p>
+</dd></dl><dl class="function"><dt id="vdw_radius-6241fea6ed6ed6a2e7331d2191ed6fac"><em class="property">function </em><code class="descname">vdw_radius</code><span class="sig-paren">(</span><em>atom</em>::Atom<span class="sig-paren">)</span><a class="headerlink" href="#vdw_radius-6241fea6ed6ed6a2e7331d2191ed6fac" title="Permalink to this function">¶</a></dt><dd><p>Get the van der Waals radius of an <code class="docutils literal notranslate"><span class="pre">atom</span></code> from the atom type.</p>
+<p>If the radius can not be found, this function returns 0.</p>
+</dd></dl><dl class="function"><dt id="covalent_radius-6241fea6ed6ed6a2e7331d2191ed6fac"><em class="property">function </em><code class="descname">covalent_radius</code><span class="sig-paren">(</span><em>atom</em>::Atom<span class="sig-paren">)</span><a class="headerlink" href="#covalent_radius-6241fea6ed6ed6a2e7331d2191ed6fac" title="Permalink to this function">¶</a></dt><dd><p>Get the covalent radius of an <code class="docutils literal notranslate"><span class="pre">atom</span></code> from the atom type.</p>
+<p>If the radius can not be found, returns 0.</p>
+</dd></dl><dl class="function"><dt id="atomic_number-6241fea6ed6ed6a2e7331d2191ed6fac"><em class="property">function </em><code class="descname">atomic_number</code><span class="sig-paren">(</span><em>atom</em>::Atom<span class="sig-paren">)</span><a class="headerlink" href="#atomic_number-6241fea6ed6ed6a2e7331d2191ed6fac" title="Permalink to this function">¶</a></dt><dd><p>Get the atomic number of an <code class="docutils literal notranslate"><span class="pre">atom</span></code> from the atom type.</p>
+<p>If the atomic number can not be found, returns 0.</p>
+</dd></dl><dl class="function"><dt id="type-6241fea6ed6ed6a2e7331d2191ed6fac"><em class="property">function </em><code class="descname">type</code><span class="sig-paren">(</span><em>atom</em>::Atom<span class="sig-paren">)</span><a class="headerlink" href="#type-6241fea6ed6ed6a2e7331d2191ed6fac" title="Permalink to this function">¶</a></dt><dd>Get the type of an <code class="docutils literal notranslate"><span class="pre">atom</span></code>.</dd></dl><dl class="function"><dt id="set_type!-eaa583fb44b5e3b4c013d0da97773cfb"><em class="property">function </em><code class="descname">set_type!</code><span class="sig-paren">(</span><em>atom</em>::Atom, <em>type</em>::String<span class="sig-paren">)</span><a class="headerlink" href="#set_type!-eaa583fb44b5e3b4c013d0da97773cfb" title="Permalink to this function">¶</a></dt><dd>Set the type of an <code class="docutils literal notranslate"><span class="pre">atom</span></code> to <code class="docutils literal notranslate"><span class="pre">type</span></code>.</dd></dl><dl class="function"><dt id="property-c95b84d8940f20c66b97deb84be21e60"><em class="property">function </em><code class="descname">property</code><span class="sig-paren">(</span><em>atom</em>::Atom, <em>name</em>::String<span class="sig-paren">)</span><a class="headerlink" href="#property-c95b84d8940f20c66b97deb84be21e60" title="Permalink to this function">¶</a></dt><dd>Get a named property for the given atom.</dd></dl><dl class="function"><dt id="set_property!-caa53d6c4767d37c864173ee9dfcb458"><em class="property">function </em><code class="descname">set_property!</code><span class="sig-paren">(</span><em>atom</em>::Atom, <em>name</em>::String, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#set_property!-caa53d6c4767d37c864173ee9dfcb458" title="Permalink to this function">¶</a></dt><dd>Set a named property for the given atom.</dd></dl><dl class="function"><dt id="properties_count-6241fea6ed6ed6a2e7331d2191ed6fac"><em class="property">function </em><code class="descname">properties_count</code><span class="sig-paren">(</span><em>atom</em>::Atom<span class="sig-paren">)</span><a class="headerlink" href="#properties_count-6241fea6ed6ed6a2e7331d2191ed6fac" title="Permalink to this function">¶</a></dt><dd>Get the number of properties associated with an atom.</dd></dl><dl class="function"><dt id="list_properties-6241fea6ed6ed6a2e7331d2191ed6fac"><em class="property">function </em><code class="descname">list_properties</code><span class="sig-paren">(</span><em>atom</em>::Atom<span class="sig-paren">)</span><a class="headerlink" href="#list_properties-6241fea6ed6ed6a2e7331d2191ed6fac" title="Permalink to this function">¶</a></dt><dd>Get the names of all properties associated with an atom.</dd></dl></div>
+
+
+    </div>
+      
+  </div>
+</div>
+  <footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+    </p>
+    <p class="pull-left">
+        &copy; Copyright Guillaume Fraux and contributors.
+    </p>
+    <p class="text-center">
+        BSD licensed on <a href="https://github.com/chemfiles/chemfiles">Github</a>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>

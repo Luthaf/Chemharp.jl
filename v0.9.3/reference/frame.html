@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Frame type &#8212; Julia interface to chemfiles 0.9.3 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="UnitCell type" href="cell.html" />
+    <link rel="prev" title="Trajectory type" href="trajectory.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js "></script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Julia interface to chemfiles</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.9</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Navigation <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc.html">Miscellaneous functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trajectory.html"><code class="docutils literal notranslate"><span class="pre">Trajectory</span></code> type</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">Frame</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cell.html"><code class="docutils literal notranslate"><span class="pre">UnitCell</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="topology.html"><code class="docutils literal notranslate"><span class="pre">Topology</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="residue.html"><code class="docutils literal notranslate"><span class="pre">Residue</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atom.html"><code class="docutils literal notranslate"><span class="pre">Atom</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selection.html"><code class="docutils literal notranslate"><span class="pre">Selection</span></code> type</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="trajectory.html" title="Previous Chapter: Trajectory type"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Trajectory type</span>
+    </a>
+  </li>
+  <li>
+    <a href="cell.html" title="Next Chapter: UnitCell type"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">UnitCell type &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc.html">Miscellaneous functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trajectory.html"><code class="docutils literal notranslate"><span class="pre">Trajectory</span></code> type</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">Frame</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cell.html"><code class="docutils literal notranslate"><span class="pre">UnitCell</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="topology.html"><code class="docutils literal notranslate"><span class="pre">Topology</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="residue.html"><code class="docutils literal notranslate"><span class="pre">Residue</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atom.html"><code class="docutils literal notranslate"><span class="pre">Atom</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selection.html"><code class="docutils literal notranslate"><span class="pre">Selection</span></code> type</a></li>
+</ul>
+
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="body col-md-9 content" role="main">
+      
+  <div class="section" id="frame-type">
+<span id="frame"></span><h1><code class="docutils literal notranslate"><span class="pre">Frame</span></code> type<a class="headerlink" href="#frame-type" title="Permalink to this headline">¶</a></h1>
+<dl class="class"><dt id=Frame><em class="property">type </em><code class="descname">Frame</code><a class="headerlink" href="#Frame" title="Permalink to thistype">¶</a></dt><dd class="body"><p>A <code class="docutils literal notranslate"><span class="pre">Frame</span></code> holds data for one step of a simulation. As not all formats
+provide all the types of information, some fields may be initialized to a
+default value. A <code class="docutils literal notranslate"><span class="pre">Frame</span></code> may contain the following data:</p>
+<ul class="simple">
+<li>Positions for all the atoms in the system;</li>
+<li>Velocities for all the atoms in the system;</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">Topology</span></code> of the system;</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">UnitCell</span></code> of the system.</li>
+</ul>
+</dd></dl><dl class="function"><dt id="Frame-e5decb275484e5a29e6a5bd94d954ffc"><em class="property">function </em><code class="descname">Frame</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Frame-e5decb275484e5a29e6a5bd94d954ffc" title="Permalink to this function">¶</a></dt><dd>Create a new empty <code class="docutils literal notranslate"><span class="pre">Frame</span></code>.</dd></dl><dl class="function"><dt id="deepcopy-45966b706c37754ba5e27076d3e0659a"><em class="property">function </em><code class="descname">deepcopy</code><span class="sig-paren">(</span><em>frame</em>::Frame<span class="sig-paren">)</span><a class="headerlink" href="#deepcopy-45966b706c37754ba5e27076d3e0659a" title="Permalink to this function">¶</a></dt><dd>Make a deep copy of a <code class="docutils literal notranslate"><span class="pre">Frame</span></code>.</dd></dl><dl class="function"><dt id="size-45966b706c37754ba5e27076d3e0659a"><em class="property">function </em><code class="descname">size</code><span class="sig-paren">(</span><em>frame</em>::Frame<span class="sig-paren">)</span><a class="headerlink" href="#size-45966b706c37754ba5e27076d3e0659a" title="Permalink to this function">¶</a></dt><dd>Get the number of atoms in the <code class="docutils literal notranslate"><span class="pre">frame</span></code>.</dd></dl><dl class="function"><dt id="resize!-6af9ae320525200d7b9f92aa1c763c22"><em class="property">function </em><code class="descname">resize!</code><span class="sig-paren">(</span><em>frame</em>::Frame, <em>natoms</em>::Integer<span class="sig-paren">)</span><a class="headerlink" href="#resize!-6af9ae320525200d7b9f92aa1c763c22" title="Permalink to this function">¶</a></dt><dd>Resize the positions and the velocities in the <code class="docutils literal notranslate"><span class="pre">frame</span></code>, to make space for
+<code class="docutils literal notranslate"><span class="pre">natoms</span></code> atoms. This function may invalidate any pointer to the positions or
+the velocities if the new size is bigger than the old one. In all the cases,
+previous data is conserved. This function conserve the presence or absence of
+velocities.</dd></dl><dl class="function"><dt id="positions-45966b706c37754ba5e27076d3e0659a"><em class="property">function </em><code class="descname">positions</code><span class="sig-paren">(</span><em>frame</em>::Frame<span class="sig-paren">)</span><a class="headerlink" href="#positions-45966b706c37754ba5e27076d3e0659a" title="Permalink to this function">¶</a></dt><dd>Get the positions in a <code class="docutils literal notranslate"><span class="pre">Frame</span></code> as an array. The positions are readable and
+writable from this array. If the frame is resized (by writing to it, or calling
+<code class="docutils literal notranslate"><span class="pre">resize!</span></code>), the array is invalidated.</dd></dl><dl class="function"><dt id="velocities-45966b706c37754ba5e27076d3e0659a"><em class="property">function </em><code class="descname">velocities</code><span class="sig-paren">(</span><em>frame</em>::Frame<span class="sig-paren">)</span><a class="headerlink" href="#velocities-45966b706c37754ba5e27076d3e0659a" title="Permalink to this function">¶</a></dt><dd><p>Get the velocities in a <code class="docutils literal notranslate"><span class="pre">Frame</span></code> as an array. The velocities are readable and
+writable from this array. If the frame is resized (by writing to it, or calling
+<code class="docutils literal notranslate"><span class="pre">resize!</span></code>), the array is invalidated.</p>
+<p>If the frame do not have velocity, this function will error. You can use
+<code class="docutils literal notranslate"><span class="pre">add_velocities!</span></code> to add velocities to a frame before calling this function.</p>
+</dd></dl><dl class="function"><dt id="add_velocities!-45966b706c37754ba5e27076d3e0659a"><em class="property">function </em><code class="descname">add_velocities!</code><span class="sig-paren">(</span><em>frame</em>::Frame<span class="sig-paren">)</span><a class="headerlink" href="#add_velocities!-45966b706c37754ba5e27076d3e0659a" title="Permalink to this function">¶</a></dt><dd>Add velocities to this <code class="docutils literal notranslate"><span class="pre">frame</span></code>. The storage is initialized with the result of
+<code class="docutils literal notranslate"><span class="pre">size(frame)</span></code> as number of atoms. If the frame already have velocities, this
+does nothing.</dd></dl><dl class="function"><dt id="has_velocities-45966b706c37754ba5e27076d3e0659a"><em class="property">function </em><code class="descname">has_velocities</code><span class="sig-paren">(</span><em>frame</em>::Frame<span class="sig-paren">)</span><a class="headerlink" href="#has_velocities-45966b706c37754ba5e27076d3e0659a" title="Permalink to this function">¶</a></dt><dd>Check if a <code class="docutils literal notranslate"><span class="pre">frame</span></code> contains velocity data or not.</dd></dl><dl class="function"><dt id="add_atom!-e49bdf6e56320042fb9bfed04e3de25c"><em class="property">function </em><code class="descname">add_atom!</code><span class="sig-paren">(</span><em>frame</em>::Frame, <em>atom</em>::Atom, <em>position</em>::Vector{Float64}, <em>velocity</em>::Vector{Float64} = <tt>Float64[0.0, 0.0, 0.0]</tt><span class="sig-paren">)</span><a class="headerlink" href="#add_atom!-e49bdf6e56320042fb9bfed04e3de25c" title="Permalink to this function">¶</a></dt><dd>Add an <code class="docutils literal notranslate"><span class="pre">atom</span></code> and the corresponding <code class="docutils literal notranslate"><span class="pre">position</span></code> and <code class="docutils literal notranslate"><span class="pre">velocity</span></code> data to a
+<code class="docutils literal notranslate"><span class="pre">frame</span></code>.</dd></dl><dl class="function"><dt id="remove_atom!-70dcd85255099a21d34318a6ac33eeb5"><em class="property">function </em><code class="descname">remove_atom!</code><span class="sig-paren">(</span><em>frame</em>::Frame, <em>index</em>::Integer<span class="sig-paren">)</span><a class="headerlink" href="#remove_atom!-70dcd85255099a21d34318a6ac33eeb5" title="Permalink to this function">¶</a></dt><dd><p>Remove the <code class="docutils literal notranslate"><span class="pre">atom</span></code> at <code class="docutils literal notranslate"><span class="pre">index</span></code> from the <code class="docutils literal notranslate"><span class="pre">frame</span></code>.</p>
+<p>This modify all the <code class="docutils literal notranslate"><span class="pre">atoms</span></code> indexes after <code class="docutils literal notranslate"><span class="pre">index</span></code>, and invalidate any
+array obtained using <code class="docutils literal notranslate"><span class="pre">positions</span></code> or <code class="docutils literal notranslate"><span class="pre">velocities</span></code>.</p>
+</dd></dl><dl class="function"><dt id="set_cell!-2f81a2184161bd9d770a781af70b8cd5"><em class="property">function </em><code class="descname">set_cell!</code><span class="sig-paren">(</span><em>frame</em>::Frame, <em>cell</em>::UnitCell<span class="sig-paren">)</span><a class="headerlink" href="#set_cell!-2f81a2184161bd9d770a781af70b8cd5" title="Permalink to this function">¶</a></dt><dd>Set the <code class="docutils literal notranslate"><span class="pre">cell</span></code> associated with a <code class="docutils literal notranslate"><span class="pre">frame</span></code>.</dd></dl><dl class="function"><dt id="set_topology!-03a6da5c47c4dac7f98f00567829a788"><em class="property">function </em><code class="descname">set_topology!</code><span class="sig-paren">(</span><em>frame</em>::Frame, <em>topology</em>::Topology<span class="sig-paren">)</span><a class="headerlink" href="#set_topology!-03a6da5c47c4dac7f98f00567829a788" title="Permalink to this function">¶</a></dt><dd>Set the <code class="docutils literal notranslate"><span class="pre">topology</span></code> associated with a <code class="docutils literal notranslate"><span class="pre">frame</span></code>.</dd></dl><dl class="function"><dt id="step-45966b706c37754ba5e27076d3e0659a"><em class="property">function </em><code class="descname">step</code><span class="sig-paren">(</span><em>frame</em>::Frame<span class="sig-paren">)</span><a class="headerlink" href="#step-45966b706c37754ba5e27076d3e0659a" title="Permalink to this function">¶</a></dt><dd>Get the <code class="docutils literal notranslate"><span class="pre">frame</span></code> step, <em>i.e.</em> the frame number in the trajectory.</dd></dl><dl class="function"><dt id="set_step!-bc550467d2c789e92c798870caa6270a"><em class="property">function </em><code class="descname">set_step!</code><span class="sig-paren">(</span><em>frame</em>::Frame, <em>step</em>::Integer<span class="sig-paren">)</span><a class="headerlink" href="#set_step!-bc550467d2c789e92c798870caa6270a" title="Permalink to this function">¶</a></dt><dd>Set the <code class="docutils literal notranslate"><span class="pre">frame</span></code> step to <code class="docutils literal notranslate"><span class="pre">step</span></code>.</dd></dl><dl class="function"><dt id="guess_bonds!-45966b706c37754ba5e27076d3e0659a"><em class="property">function </em><code class="descname">guess_bonds!</code><span class="sig-paren">(</span><em>frame</em>::Frame<span class="sig-paren">)</span><a class="headerlink" href="#guess_bonds!-45966b706c37754ba5e27076d3e0659a" title="Permalink to this function">¶</a></dt><dd>Guess the bonds, angles and dihedrals in the <code class="docutils literal notranslate"><span class="pre">frame</span></code> using a distance criteria.</dd></dl><dl class="function"><dt id="add_bond!-8a5a1bc522f07473151c1fb0c70c1734"><em class="property">function </em><code class="descname">add_bond!</code><span class="sig-paren">(</span><em>frame</em>::Frame, <em>i</em>::Integer, <em>j</em>::Integer, <em>order</em> = <tt>nothing</tt><span class="sig-paren">)</span><a class="headerlink" href="#add_bond!-8a5a1bc522f07473151c1fb0c70c1734" title="Permalink to this function">¶</a></dt><dd>Add an additional bond to the <code class="docutils literal notranslate"><span class="pre">Frame</span></code>’s <code class="docutils literal notranslate"><span class="pre">Topology</span></code>.</dd></dl><dl class="function"><dt id="remove_bond!-b116878587e829785c1e6f4b4039b05d"><em class="property">function </em><code class="descname">remove_bond!</code><span class="sig-paren">(</span><em>frame</em>::Frame, <em>i</em>::Integer, <em>j</em>::Integer<span class="sig-paren">)</span><a class="headerlink" href="#remove_bond!-b116878587e829785c1e6f4b4039b05d" title="Permalink to this function">¶</a></dt><dd>Remove a bond from the <code class="docutils literal notranslate"><span class="pre">Frame</span></code>’s <code class="docutils literal notranslate"><span class="pre">Topology</span></code>.</dd></dl><dl class="function"><dt id="add_residue!-be844ffcb6d073b35a158f0f6732641f"><em class="property">function </em><code class="descname">add_residue!</code><span class="sig-paren">(</span><em>frame</em>::Frame, <em>residue</em>::Residue<span class="sig-paren">)</span><a class="headerlink" href="#add_residue!-be844ffcb6d073b35a158f0f6732641f" title="Permalink to this function">¶</a></dt><dd>Add a residue to the <code class="docutils literal notranslate"><span class="pre">Frame</span></code>’s <code class="docutils literal notranslate"><span class="pre">Topology</span></code>.</dd></dl><dl class="function"><dt id="distance-b116878587e829785c1e6f4b4039b05d"><em class="property">function </em><code class="descname">distance</code><span class="sig-paren">(</span><em>frame</em>::Frame, <em>i</em>::Integer, <em>j</em>::Integer<span class="sig-paren">)</span><a class="headerlink" href="#distance-b116878587e829785c1e6f4b4039b05d" title="Permalink to this function">¶</a></dt><dd>Calculate the distance between two atoms.</dd></dl><dl class="function"><dt id="angle-6fc25355c2f29926f1a2816701db54a5"><em class="property">function </em><code class="descname">angle</code><span class="sig-paren">(</span><em>frame</em>::Frame, <em>i</em>::Integer, <em>j</em>::Integer, <em>k</em>::Integer<span class="sig-paren">)</span><a class="headerlink" href="#angle-6fc25355c2f29926f1a2816701db54a5" title="Permalink to this function">¶</a></dt><dd>Calculate the angle made by three atoms.</dd></dl><dl class="function"><dt id="dihedral-bfcd3addf1ce4b41bcdbfa7497401749"><em class="property">function </em><code class="descname">dihedral</code><span class="sig-paren">(</span><em>frame</em>::Frame, <em>i</em>::Integer, <em>j</em>::Integer, <em>k</em>::Integer, <em>m</em>::Integer<span class="sig-paren">)</span><a class="headerlink" href="#dihedral-bfcd3addf1ce4b41bcdbfa7497401749" title="Permalink to this function">¶</a></dt><dd>Calculate the dihedral (torsional) angle made by four unbranched atoms.</dd></dl><dl class="function"><dt id="out_of_plane-bfcd3addf1ce4b41bcdbfa7497401749"><em class="property">function </em><code class="descname">out_of_plane</code><span class="sig-paren">(</span><em>frame</em>::Frame, <em>i</em>::Integer, <em>j</em>::Integer, <em>k</em>::Integer, <em>m</em>::Integer<span class="sig-paren">)</span><a class="headerlink" href="#out_of_plane-bfcd3addf1ce4b41bcdbfa7497401749" title="Permalink to this function">¶</a></dt><dd>Calculate the out-of-plane (improper) angle made by four atoms.</dd></dl><dl class="function"><dt id="property-37b50ad0cfe6edc390d1f67e24c185dc"><em class="property">function </em><code class="descname">property</code><span class="sig-paren">(</span><em>frame</em>::Frame, <em>name</em>::String<span class="sig-paren">)</span><a class="headerlink" href="#property-37b50ad0cfe6edc390d1f67e24c185dc" title="Permalink to this function">¶</a></dt><dd>Get a named property for the given atom.</dd></dl><dl class="function"><dt id="set_property!-eace50fd10a21d4ed0b9795efe6ec701"><em class="property">function </em><code class="descname">set_property!</code><span class="sig-paren">(</span><em>frame</em>::Frame, <em>name</em>::String, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#set_property!-eace50fd10a21d4ed0b9795efe6ec701" title="Permalink to this function">¶</a></dt><dd>Set a named property for the given <code class="docutils literal notranslate"><span class="pre">Frame</span></code>.</dd></dl><dl class="function"><dt id="properties_count-45966b706c37754ba5e27076d3e0659a"><em class="property">function </em><code class="descname">properties_count</code><span class="sig-paren">(</span><em>frame</em>::Frame<span class="sig-paren">)</span><a class="headerlink" href="#properties_count-45966b706c37754ba5e27076d3e0659a" title="Permalink to this function">¶</a></dt><dd>Get the number of properties associated with a frame.</dd></dl><dl class="function"><dt id="list_properties-45966b706c37754ba5e27076d3e0659a"><em class="property">function </em><code class="descname">list_properties</code><span class="sig-paren">(</span><em>frame</em>::Frame<span class="sig-paren">)</span><a class="headerlink" href="#list_properties-45966b706c37754ba5e27076d3e0659a" title="Permalink to this function">¶</a></dt><dd>Get the names of all properties associated with a frame.</dd></dl></div>
+
+
+    </div>
+      
+  </div>
+</div>
+  <footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+    </p>
+    <p class="pull-left">
+        &copy; Copyright Guillaume Fraux and contributors.
+    </p>
+    <p class="text-center">
+        BSD licensed on <a href="https://github.com/chemfiles/chemfiles">Github</a>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>

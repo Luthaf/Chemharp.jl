@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Julia interface to chemfiles &#8212; Julia interface to chemfiles 0.6.0 documentation</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.6.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Usage examples" href="examples.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">
+          Julia interface to chemfiles</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.6</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Usage examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Julia interface reference</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Julia interface to chemfiles</a><ul>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#user-documentation">User documentation</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="examples.html" title="Next Chapter: Usage examples"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Usage examples &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/index.rst.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="julia-interface-to-chemfiles">
+<h1>Julia interface to chemfiles<a class="headerlink" href="#julia-interface-to-chemfiles" title="Permalink to this headline">¶</a></h1>
+<p>This is the documentation for the <a class="reference external" href="http://julialang.org/">Julia</a> interface to the <a class="reference external" href="https://github.com/chemfiles/chemfiles">chemfiles</a> library.</p>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>You will need to install the last released version of Julia (<code class="docutils literal"><span class="pre">Julia</span> <span class="pre">&gt;=</span> <span class="pre">0.4</span></code>), and
+then you can install the <code class="docutils literal"><span class="pre">Chemfiles</span></code> package by running the following at Julia
+prompt:</p>
+<div class="highlight-julia"><div class="highlight"><pre><span></span><span class="n">julia</span><span class="o">&gt;</span> <span class="n">Pkg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;Chemfiles&quot;</span><span class="p">)</span>
+
+<span class="n">julia</span><span class="o">&gt;</span> <span class="c">#You may also want to run the test suite of the Julia interface with:</span>
+
+<span class="n">julia</span><span class="o">&gt;</span> <span class="n">Pkg</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="s">&quot;Chemfiles&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="user-documentation">
+<h2>User documentation<a class="headerlink" href="#user-documentation" title="Permalink to this headline">¶</a></h2>
+<p>This section contains example of how to use <cite>Chemfiles.jl</cite>, and the complete
+interface reference for all the types and subroutines in chemfiles.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Usage examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#read-a-single-frame-indexes-jl">Read a single frame (indexes.jl)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#read-multiple-frames-rmsd-jl">Read Multiple frames (rmsd.jl)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#write-frames-convert-jl">Write frames (convert.jl)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#use-selections-select-jl">Use selections (select.jl)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Julia interface reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#error-and-logging-functions">Error and logging functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#trajectory-type-and-associated-functions"><code class="docutils literal"><span class="pre">Trajectory</span></code> type and associated functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#frame-type-and-associated-functions"><code class="docutils literal"><span class="pre">Frame</span></code> type and associated functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#unitcell-type-and-associated-function"><code class="docutils literal"><span class="pre">UnitCell</span></code> type and associated function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#topology-type-and-associated-function"><code class="docutils literal"><span class="pre">Topology</span></code> type and associated function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#atom-type-and-associated-function"><code class="docutils literal"><span class="pre">Atom</span></code> type and associated function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#residue-type-and-associated-function"><code class="docutils literal"><span class="pre">Residue</span></code> type and associated function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#selection-type-and-associated-function"><code class="docutils literal"><span class="pre">Selection</span></code> type and associated function</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015, Guillaume Fraux — MPLv2 licence.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

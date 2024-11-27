@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Topology type &#8212; Julia interface to chemfiles 0.9.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Residue type" href="residue.html" />
+    <link rel="prev" title="UnitCell type" href="cell.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Julia interface to chemfiles</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.9</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Navigation <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc.html">Miscellaneous functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trajectory.html"><code class="docutils literal notranslate"><span class="pre">Trajectory</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frame.html"><code class="docutils literal notranslate"><span class="pre">Frame</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cell.html"><code class="docutils literal notranslate"><span class="pre">UnitCell</span></code> type</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">Topology</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="residue.html"><code class="docutils literal notranslate"><span class="pre">Residue</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atom.html"><code class="docutils literal notranslate"><span class="pre">Atom</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selection.html"><code class="docutils literal notranslate"><span class="pre">Selection</span></code> type</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="cell.html" title="Previous Chapter: UnitCell type"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; UnitCell type</span>
+    </a>
+  </li>
+  <li>
+    <a href="residue.html" title="Next Chapter: Residue type"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Residue type &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc.html">Miscellaneous functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trajectory.html"><code class="docutils literal notranslate"><span class="pre">Trajectory</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frame.html"><code class="docutils literal notranslate"><span class="pre">Frame</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cell.html"><code class="docutils literal notranslate"><span class="pre">UnitCell</span></code> type</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">Topology</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="residue.html"><code class="docutils literal notranslate"><span class="pre">Residue</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atom.html"><code class="docutils literal notranslate"><span class="pre">Atom</span></code> type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selection.html"><code class="docutils literal notranslate"><span class="pre">Selection</span></code> type</a></li>
+</ul>
+
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="topology-type">
+<span id="topology"></span><h1><code class="docutils literal notranslate"><span class="pre">Topology</span></code> type<a class="headerlink" href="#topology-type" title="Permalink to this headline">¶</a></h1>
+<dl class="class"><dt id=Topology><em class="property">type </em><code class="descname">Topology</code><a class="headerlink" href="#Topology" title="Permalink to thistype">¶</a></dt><dd class="body">A <code class="docutils literal notranslate"><span class="pre">Topology</span></code> describes the organisation of the particles in the system:
+what their names are, how they are bonded together, <em>etc.</em> A <code class="docutils literal notranslate"><span class="pre">Topology</span></code>
+is a list of <code class="docutils literal notranslate"><span class="pre">Atoms</span></code> in the system, together with the list of bonds
+between the atoms.</dd></dl><dl class="function"><dt id="Topology-e5decb275484e5a29e6a5bd94d954ffc"><em class="property">function </em><code class="descname">Topology</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Topology-e5decb275484e5a29e6a5bd94d954ffc" title="Permalink to this function">¶</a></dt><dd>Create an empty <code class="docutils literal notranslate"><span class="pre">Topology</span></code>.</dd></dl><dl class="function"><dt id="Topology-45966b706c37754ba5e27076d3e0659a"><em class="property">function </em><code class="descname">Topology</code><span class="sig-paren">(</span><em>frame</em>::Frame<span class="sig-paren">)</span><a class="headerlink" href="#Topology-45966b706c37754ba5e27076d3e0659a" title="Permalink to this function">¶</a></dt><dd>Get a copy of the <code class="docutils literal notranslate"><span class="pre">Topology</span></code> of the given <code class="docutils literal notranslate"><span class="pre">frame</span></code>.</dd></dl><dl class="function"><dt id="deepcopy-b7874e3741aa5d754a6d4400e0e481f1"><em class="property">function </em><code class="descname">deepcopy</code><span class="sig-paren">(</span><em>topology</em>::Topology<span class="sig-paren">)</span><a class="headerlink" href="#deepcopy-b7874e3741aa5d754a6d4400e0e481f1" title="Permalink to this function">¶</a></dt><dd>Make a deep copy of a <code class="docutils literal notranslate"><span class="pre">topology</span></code>.</dd></dl><dl class="function"><dt id="size-b7874e3741aa5d754a6d4400e0e481f1"><em class="property">function </em><code class="descname">size</code><span class="sig-paren">(</span><em>topology</em>::Topology<span class="sig-paren">)</span><a class="headerlink" href="#size-b7874e3741aa5d754a6d4400e0e481f1" title="Permalink to this function">¶</a></dt><dd>Get the <code class="docutils literal notranslate"><span class="pre">Topology</span></code> size, i.e. the current number of atoms.</dd></dl><dl class="function"><dt id="add_atom!-18f287d0b4f96c7d346d23b43bdfe0a3"><em class="property">function </em><code class="descname">add_atom!</code><span class="sig-paren">(</span><em>topology</em>::Topology, <em>atom</em>::Atom<span class="sig-paren">)</span><a class="headerlink" href="#add_atom!-18f287d0b4f96c7d346d23b43bdfe0a3" title="Permalink to this function">¶</a></dt><dd>Add an <code class="docutils literal notranslate"><span class="pre">atom</span></code> at the end of a <code class="docutils literal notranslate"><span class="pre">topology</span></code>.</dd></dl><dl class="function"><dt id="remove_atom!-a86e7d896afce6df5b7c58fd02a97b99"><em class="property">function </em><code class="descname">remove_atom!</code><span class="sig-paren">(</span><em>topology</em>::Topology, <em>index</em>::Integer<span class="sig-paren">)</span><a class="headerlink" href="#remove_atom!-a86e7d896afce6df5b7c58fd02a97b99" title="Permalink to this function">¶</a></dt><dd>Remove the atom at the given <code class="docutils literal notranslate"><span class="pre">index</span></code> from a <code class="docutils literal notranslate"><span class="pre">topology</span></code>.</dd></dl><dl class="function"><dt id="bonds_count-b7874e3741aa5d754a6d4400e0e481f1"><em class="property">function </em><code class="descname">bonds_count</code><span class="sig-paren">(</span><em>topology</em>::Topology<span class="sig-paren">)</span><a class="headerlink" href="#bonds_count-b7874e3741aa5d754a6d4400e0e481f1" title="Permalink to this function">¶</a></dt><dd>Get the number of bonds in the <code class="docutils literal notranslate"><span class="pre">topology</span></code>.</dd></dl><dl class="function"><dt id="angles_count-b7874e3741aa5d754a6d4400e0e481f1"><em class="property">function </em><code class="descname">angles_count</code><span class="sig-paren">(</span><em>topology</em>::Topology<span class="sig-paren">)</span><a class="headerlink" href="#angles_count-b7874e3741aa5d754a6d4400e0e481f1" title="Permalink to this function">¶</a></dt><dd>Get the number of angles in the <code class="docutils literal notranslate"><span class="pre">topology</span></code>.</dd></dl><dl class="function"><dt id="dihedrals_count-b7874e3741aa5d754a6d4400e0e481f1"><em class="property">function </em><code class="descname">dihedrals_count</code><span class="sig-paren">(</span><em>topology</em>::Topology<span class="sig-paren">)</span><a class="headerlink" href="#dihedrals_count-b7874e3741aa5d754a6d4400e0e481f1" title="Permalink to this function">¶</a></dt><dd>Get the number of dihedral angles in the <code class="docutils literal notranslate"><span class="pre">topology</span></code>.</dd></dl><dl class="function"><dt id="impropers_count-b7874e3741aa5d754a6d4400e0e481f1"><em class="property">function </em><code class="descname">impropers_count</code><span class="sig-paren">(</span><em>topology</em>::Topology<span class="sig-paren">)</span><a class="headerlink" href="#impropers_count-b7874e3741aa5d754a6d4400e0e481f1" title="Permalink to this function">¶</a></dt><dd>Get the number of improper angles in the <code class="docutils literal notranslate"><span class="pre">topology</span></code>.</dd></dl><dl class="function"><dt id="bonds-b7874e3741aa5d754a6d4400e0e481f1"><em class="property">function </em><code class="descname">bonds</code><span class="sig-paren">(</span><em>topology</em>::Topology<span class="sig-paren">)</span><a class="headerlink" href="#bonds-b7874e3741aa5d754a6d4400e0e481f1" title="Permalink to this function">¶</a></dt><dd>Get the bonds in the <code class="docutils literal notranslate"><span class="pre">topology</span></code>, in a <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">x</span> <span class="pre">bonds_count(topology)</span></code> array.</dd></dl><dl class="function"><dt id="angles-b7874e3741aa5d754a6d4400e0e481f1"><em class="property">function </em><code class="descname">angles</code><span class="sig-paren">(</span><em>topology</em>::Topology<span class="sig-paren">)</span><a class="headerlink" href="#angles-b7874e3741aa5d754a6d4400e0e481f1" title="Permalink to this function">¶</a></dt><dd>Get the angles in the <code class="docutils literal notranslate"><span class="pre">topology</span></code>, in a <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">x</span> <span class="pre">angles_count(topology)</span></code> array.</dd></dl><dl class="function"><dt id="dihedrals-b7874e3741aa5d754a6d4400e0e481f1"><em class="property">function </em><code class="descname">dihedrals</code><span class="sig-paren">(</span><em>topology</em>::Topology<span class="sig-paren">)</span><a class="headerlink" href="#dihedrals-b7874e3741aa5d754a6d4400e0e481f1" title="Permalink to this function">¶</a></dt><dd>Get the dihedral angles in the <code class="docutils literal notranslate"><span class="pre">topology</span></code>, in a <code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">x</span> <span class="pre">dihedrals_count(topology)</span></code>
+array.</dd></dl><dl class="function"><dt id="impropers-b7874e3741aa5d754a6d4400e0e481f1"><em class="property">function </em><code class="descname">impropers</code><span class="sig-paren">(</span><em>topology</em>::Topology<span class="sig-paren">)</span><a class="headerlink" href="#impropers-b7874e3741aa5d754a6d4400e0e481f1" title="Permalink to this function">¶</a></dt><dd>Get the improper angles in the <code class="docutils literal notranslate"><span class="pre">topology</span></code>, in a <code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">x</span> <span class="pre">impropers_count(topology)</span></code>
+array.</dd></dl><dl class="function"><dt id="add_bond!-fe7aa4709cb443bd220fee078df26662"><em class="property">function </em><code class="descname">add_bond!</code><span class="sig-paren">(</span><em>topology</em>::Topology, <em>i</em>::Integer, <em>j</em>::Integer, <em>order</em> = <tt>nothing</tt><span class="sig-paren">)</span><a class="headerlink" href="#add_bond!-fe7aa4709cb443bd220fee078df26662" title="Permalink to this function">¶</a></dt><dd>Add a bond between the atoms <code class="docutils literal notranslate"><span class="pre">i</span></code> and <code class="docutils literal notranslate"><span class="pre">j</span></code> in the <code class="docutils literal notranslate"><span class="pre">topology</span></code>, optionaly
+setting the bond <code class="docutils literal notranslate"><span class="pre">order</span></code>.</dd></dl><dl class="function"><dt id="remove_bond!-997a49f3b2fe3628a2b713e92ecf7dda"><em class="property">function </em><code class="descname">remove_bond!</code><span class="sig-paren">(</span><em>topology</em>::Topology, <em>i</em>::Integer, <em>j</em>::Integer<span class="sig-paren">)</span><a class="headerlink" href="#remove_bond!-997a49f3b2fe3628a2b713e92ecf7dda" title="Permalink to this function">¶</a></dt><dd>Remove any existing bond between the atoms <code class="docutils literal notranslate"><span class="pre">i</span></code> and <code class="docutils literal notranslate"><span class="pre">j</span></code> in the <code class="docutils literal notranslate"><span class="pre">topology</span></code>.</dd></dl><dl class="function"><dt id="bond_order-997a49f3b2fe3628a2b713e92ecf7dda"><em class="property">function </em><code class="descname">bond_order</code><span class="sig-paren">(</span><em>topology</em>::Topology, <em>i</em>::Integer, <em>j</em>::Integer<span class="sig-paren">)</span><a class="headerlink" href="#bond_order-997a49f3b2fe3628a2b713e92ecf7dda" title="Permalink to this function">¶</a></dt><dd>Get the <code class="docutils literal notranslate"><span class="pre">BondOrder</span></code> for the bond between atoms <code class="docutils literal notranslate"><span class="pre">i</span></code> and <code class="docutils literal notranslate"><span class="pre">j</span></code> in the
+<code class="docutils literal notranslate"><span class="pre">topology</span></code>.</dd></dl><dl class="function"><dt id="bond_orders-b7874e3741aa5d754a6d4400e0e481f1"><em class="property">function </em><code class="descname">bond_orders</code><span class="sig-paren">(</span><em>topology</em>::Topology<span class="sig-paren">)</span><a class="headerlink" href="#bond_orders-b7874e3741aa5d754a6d4400e0e481f1" title="Permalink to this function">¶</a></dt><dd>Get the <code class="docutils literal notranslate"><span class="pre">BondOrder</span></code> for all the bonds in the <code class="docutils literal notranslate"><span class="pre">topology</span></code>.</dd></dl><dl class="function"><dt id="add_residue!-d56d619139b598e7d4f361e76992f6ee"><em class="property">function </em><code class="descname">add_residue!</code><span class="sig-paren">(</span><em>topology</em>::Topology, <em>residue</em>::Residue<span class="sig-paren">)</span><a class="headerlink" href="#add_residue!-d56d619139b598e7d4f361e76992f6ee" title="Permalink to this function">¶</a></dt><dd><p>Add a copy of <code class="docutils literal notranslate"><span class="pre">residue</span></code> to this <code class="docutils literal notranslate"><span class="pre">topology</span></code>.</p>
+<p>The residue id must not already be in the topology, and the residue must
+contain only atoms that are not already in another residue.</p>
+</dd></dl><dl class="function"><dt id="count_residues-b7874e3741aa5d754a6d4400e0e481f1"><em class="property">function </em><code class="descname">count_residues</code><span class="sig-paren">(</span><em>topology</em>::Topology<span class="sig-paren">)</span><a class="headerlink" href="#count_residues-b7874e3741aa5d754a6d4400e0e481f1" title="Permalink to this function">¶</a></dt><dd>Get the number of residues in the <code class="docutils literal notranslate"><span class="pre">topology</span></code>.</dd></dl><dl class="function"><dt id="are_linked-987ad6d716ddc8f4d5a30da00c5de7f7"><em class="property">function </em><code class="descname">are_linked</code><span class="sig-paren">(</span><em>topology</em>::Topology, <em>first</em>::Residue, <em>second</em>::Residue<span class="sig-paren">)</span><a class="headerlink" href="#are_linked-987ad6d716ddc8f4d5a30da00c5de7f7" title="Permalink to this function">¶</a></dt><dd>Check if the two residues <code class="docutils literal notranslate"><span class="pre">first</span></code> and <code class="docutils literal notranslate"><span class="pre">second</span></code> from the <code class="docutils literal notranslate"><span class="pre">topology</span></code> are
+linked together, <em>i.e.</em> if there is a bond between one atom in the first
+residue and one atom in the second one.</dd></dl><dl class="function"><dt id="resize!-9087c4cd0bf54c7610b1cf1471968f6a"><em class="property">function </em><code class="descname">resize!</code><span class="sig-paren">(</span><em>topology</em>::Topology, <em>size</em>::Integer<span class="sig-paren">)</span><a class="headerlink" href="#resize!-9087c4cd0bf54c7610b1cf1471968f6a" title="Permalink to this function">¶</a></dt><dd><p>Resize the <code class="docutils literal notranslate"><span class="pre">topology</span></code> to hold <code class="docutils literal notranslate"><span class="pre">natoms</span></code> atoms. If the new number of atoms is
+bigger than the current number, new atoms will be created with an empty name
+and type.</p>
+<p>If it is lower than the current number of atoms, the last atoms will be removed,
+together with the associated bonds, angles and dihedrals.</p>
+</dd></dl></div>
+
+
+    </div>
+      
+  </div>
+</div>
+  <footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+    </p>
+    <p class="pull-left">
+        &copy; Copyright Guillaume Fraux and contributors.
+    </p>
+    <p class="text-center">
+        BSD licensed on <a href="https://github.com/chemfiles/chemfiles">Github</a>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>
